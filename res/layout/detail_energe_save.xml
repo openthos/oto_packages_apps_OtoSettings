@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/energySavingSetting"
+        android:textSize="@dimen/setting_right_titleFont_size"
+        android:gravity="center_horizontal"/>
+    <TextView
+        android:background="@drawable/line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/powerPlan"
+            android:textSize="@dimen/setting_right_MiddleFont_size"
+            android:textStyle="bold"
+            android:gravity="bottom"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:text="@string/power_balance"
+                android:textSize="@dimen/setting_right_MinFont_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:text="@string/power_energysaving"
+                android:textSize="@dimen/setting_right_MinFont_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:text="@string/power_efficient"
+                android:textSize="@dimen/setting_right_MinFont_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+
+    </LinearLayout>
+    <TextView
+        android:background="@drawable/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/sleeping"
+            android:textSize="@dimen/setting_right_MiddleFont_size"
+            android:textStyle="bold"
+            android:gravity="bottom"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sleep_description1"
+            android:textSize="@dimen/setting_right_MinFont_size" />
+        <Spinner
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/spinner_time">
+
+        </Spinner>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sleep_description2"
+            android:textSize="@dimen/setting_right_MinFont_size" />
+        <Spinner
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/spinner_time">
+
+        </Spinner>
+    </LinearLayout>
+    <TextView
+        android:background="@drawable/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/screen"
+            android:textSize="@dimen/setting_right_MiddleFont_size"
+            android:textStyle="bold"
+            android:gravity="bottom"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sleep_description1"
+            android:textSize="@dimen/setting_right_MinFont_size" />
+        <Spinner
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/spinner_time">
+
+        </Spinner>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/screen_description2"
+            android:textSize="@dimen/setting_right_MinFont_size" />
+        <Spinner
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/spinner_time">
+
+        </Spinner>
+
+    </LinearLayout>
+
+    <TextView
+        android:background="@drawable/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <Button
+        android:text="@string/backToDefault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

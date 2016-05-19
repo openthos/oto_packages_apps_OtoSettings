@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/setting_right_titleFont_size"
+        android:text="@string/notifyManager"
+        android:gravity="center_horizontal"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/line"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/softCanNotify"
+        android:paddingTop="10dp"
+        android:textSize="@dimen/setting_right_MiddleFont_size"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/line"/>
+    <ListView
+        android:id="@+id/ls_notify_application"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+    </ListView>
+
+</LinearLayout>

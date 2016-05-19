@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/setting_right_titleFont_size"
+        android:text="@string/cloudService"
+        android:gravity="center_horizontal"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/line"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/theTimeLastSync"
+        android:textSize="@dimen/setting_right_MinFont_size"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/userResourceSync"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/setting_right_MiddleFont_size"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/line"/>
+            <ListView
+                android:id="@+id/ls_user_info"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+            </ListView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/applciationResouceSync"
+                android:textSize="@dimen/setting_right_MiddleFont_size"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/line"/>
+            <ListView
+                android:id="@+id/ls_app_info"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+            </ListView>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

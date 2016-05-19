@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+
+        android:background="#bfbfbf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:orientation="vertical">
+        <RadioGroup
+            android:id="@+id/left_app_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/left_setting_inform_sb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/radio_setting"
+                android:layout_weight="1"
+                android:button="@null"
+                android:textSize="@dimen/setting_left_font_size"
+                android:paddingLeft="@dimen/setting_left_paddingLeft"
+                android:paddingTop="@dimen/setting_left_paddingTop"
+                android:paddingBottom="@dimen/setting_left_paddingBottom"
+                android:text="@string/notifyManager"/>
+            <RadioButton
+                android:id="@+id/left_setting_reboot_p"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/radio_setting"
+                android:layout_weight="1"
+                android:button="@null"
+                android:textSize="@dimen/setting_left_font_size"
+                android:paddingLeft="@dimen/setting_left_paddingLeft"
+                android:paddingTop="@dimen/setting_left_paddingTop"
+                android:paddingBottom="@dimen/setting_left_paddingBottom"
+                android:text="@string/openStartManager"/>
+            <RadioButton
+                android:id="@+id/left_setting_progress_manager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/radio_setting"
+                android:layout_weight="1"
+                android:button="@null"
+                android:textSize="@dimen/setting_left_font_size"
+                android:paddingLeft="@dimen/setting_left_paddingLeft"
+                android:paddingTop="@dimen/setting_left_paddingTop"
+                android:paddingBottom="@dimen/setting_left_paddingBottom"
+                android:text="@string/progressManager"/>
+            <RadioButton
+                android:id="@+id/left_setting_run_mode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/radio_setting"
+                android:layout_weight="1"
+                android:button="@null"
+                android:textSize="@dimen/setting_left_font_size"
+                android:paddingLeft="@dimen/setting_left_paddingLeft"
+                android:paddingTop="@dimen/setting_left_paddingTop"
+                android:paddingBottom="@dimen/setting_left_paddingBottom"
+                android:text="@string/runningMode"/>
+        </RadioGroup>
+
+
+    </LinearLayout>
+</LinearLayout>

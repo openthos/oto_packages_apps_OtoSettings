@@ -1,23 +1,23 @@
 # Keep all Fragments in this package, which are used by reflection.
--keep class com.android.settings.*Fragment
--keep class com.android.settings.*Picker
--keep class com.android.settings.*Settings
--keep class com.android.settings.wifi.*Settings
--keep class com.android.settings.deviceinfo.*
--keep class com.android.settings.bluetooth.*
--keep class com.android.settings.applications.*
--keep class com.android.settings.inputmethod.*
--keep class com.android.settings.MasterClear
--keep class com.android.settings.MasterClearConfirm
--keep class com.android.settings.accounts.*
--keep class com.android.settings.fuelgauge.*
--keep class com.android.settings.users.*
--keep class com.android.settings.nfc.*
--keep class com.android.settings.notification.*
+-keep class com.android.otosettings.*Fragment
+-keep class com.android.otosettings.*Picker
+-keep class com.android.otosettings.*Settings
+-keep class com.android.otosettings.wifi.*Settings
+-keep class com.android.otosettings.deviceinfo.*
+-keep class com.android.otosettings.bluetooth.*
+-keep class com.android.otosettings.applications.*
+-keep class com.android.otosettings.inputmethod.*
+-keep class com.android.otosettings.MasterClear
+-keep class com.android.otosettings.MasterClearConfirm
+-keep class com.android.otosettings.accounts.*
+-keep class com.android.otosettings.fuelgauge.*
+-keep class com.android.otosettings.users.*
+-keep class com.android.otosettings.nfc.*
+-keep class com.android.otosettings.notification.*
 -keep class com.koushikdutta.**
--keep class com.android.settings.cyanogenmod.superuser.**
+-keep class com.android.otosettings.cyanogenmod.superuser.**
 
 # Keep click responders
--keepclassmembers class com.android.settings.inputmethod.UserDictionaryAddWordActivity {
+-keepclassmembers class com.android.otosettings.inputmethod.UserDictionaryAddWordActivity {
   *** onClick*(...);
 }
