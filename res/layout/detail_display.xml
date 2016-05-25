@@ -15,6 +15,8 @@
         android:layout_height="2dp"
         android:background="@drawable/line"/>
     <LinearLayout
+        android:id="@+id/detail_display_light"
+        android:clickable="true"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
@@ -25,6 +27,7 @@
             android:textSize="@dimen/setting_right_MiddleFont_size"
             android:text="@string/light"/>
         <TextView
+            android:id="@+id/light_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/setting_right_MinFont_size"
@@ -35,6 +38,8 @@
         android:layout_height="2dp"
         android:background="@drawable/line"/>
     <LinearLayout
+        android:id="@+id/detail_display_project"
+        android:clickable="true"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
@@ -44,18 +49,21 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/setting_right_MiddleFont_size"
             android:text="@string/project"/>
-        <Spinner
-            android:layout_marginLeft="20dp"
-            android:layout_width="200dp"
+        <TextView
+            android:id="@+id/projectInfo"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/projection">
-        </Spinner>
+            android:textSize="@dimen/setting_right_MinFont_size"
+            android:text="@string/projectSituation">
+        </TextView>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@drawable/line"/>
     <LinearLayout
+        android:id="@+id/detail_display_fontSize"
+        android:clickable="true"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
@@ -66,6 +74,7 @@
             android:textSize="@dimen/setting_right_MiddleFont_size"
             android:text="@string/systemFontSize"/>
         <TextView
+            android:id="@+id/fontSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/setting_right_MinFont_size"
@@ -78,6 +87,8 @@
         android:background="@drawable/line"/>
 
     <LinearLayout
+        android:id="@+id/detail_display_wallPaper"
+        android:clickable="true"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
@@ -88,6 +99,7 @@
             android:textSize="@dimen/setting_right_MiddleFont_size"
             android:text="@string/wallpaper"/>
         <TextView
+            android:id="@+id/wallPaperInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/setting_right_MinFont_size"

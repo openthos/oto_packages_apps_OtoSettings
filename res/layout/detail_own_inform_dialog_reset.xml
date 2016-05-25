@@ -2,39 +2,42 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:textSize="@dimen/setting_right_titleFont_size"
-        android:text="@string/runningMode"
+        android:text="@string/systemReset"
         android:gravity="center_horizontal"/>
     <TextView
-        android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@drawable/line"/>
-    <RadioGroup
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:orientation="vertical">
-        <RadioButton
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textSize="@dimen/setting_right_MiddleFont_size"
+            android:text="@string/theResetDescription"/>
+        <Button
+            android:id="@+id/btn_detail_own_info_dialog_reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
             android:textSize="@dimen/setting_right_MiddleFont_size"
-            android:text="@string/autoMode"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/setting_right_MiddleFont_size"
-            android:text="@string/handMode"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/setting_right_MiddleFont_size"
-            android:text="@string/diskTableMode"/>
-    </RadioGroup>
+            android:text="@string/systemReset"/>
+    </LinearLayout>
 
+</LinearLayout>
 </LinearLayout>

@@ -37,7 +37,7 @@ public class NotifyManagerFragment extends Fragment {
         return fragment_1_view;
     }
     //show data
-    public void setInfo(){
+    public void setInfo() {
         settingAppInfos.clear();
         int i=0;
         while(i<20){
@@ -46,9 +46,8 @@ public class NotifyManagerFragment extends Fragment {
             information.setAppStatus("on");
             information.setAppIcon(R.drawable.ic_launcher);
 
-            settingAppInfos.add(information); 
+            settingAppInfos.add(information);
             i++;
         }
     }
-
 }

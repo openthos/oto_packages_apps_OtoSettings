@@ -47,7 +47,7 @@ public class OpenSatrtFragment extends Fragment {
             information.setAppStatus("on");
             information.setAppIcon(R.drawable.ic_launcher);
 
-            settingAppInfos.add(information); 
+            settingAppInfos.add(information);
             i++;
         }
     }

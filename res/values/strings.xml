@@ -121,6 +121,15 @@
     <string name="wifiNetLabel">wifiNet</string>
     <string name="software">software1</string>
     <string name="on">on</string>
+
+    <string name="projectSituation">project</string>
+    <string name="theNowVersion">the now version</string>
+    <string name="theNewestVersion">the newest version</string>
+    <string name="theResetDescription">the system reset will clear all data,please make a copy before.</string>
+    <string name="confirm">confirm</string>
+    <string name="cancel">cancel</string>
+    <string name="userDefined">userDefined</string>
+
     <!-- Strings for Dialog yes button -->
     <string name="yes">"Yes"</string>
 

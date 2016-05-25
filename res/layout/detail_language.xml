@@ -15,6 +15,8 @@
         android:layout_height="2dp"
         android:background="@drawable/line"/>
     <LinearLayout
+        android:id="@+id/detail_language_languageInfo"
+        android:clickable="true"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
@@ -26,6 +28,7 @@
             android:textSize="@dimen/setting_right_MiddleFont_size"
             android:text="@string/language"/>
         <TextView
+            android:id="@+id/language_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/setting_right_MinFont_size"
@@ -36,6 +39,8 @@
         android:layout_height="2dp"
         android:background="@drawable/line"/>
     <LinearLayout
+        android:id="@+id/detail_language_type_writing"
+        android:clickable="true"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
@@ -47,6 +52,7 @@
             android:textSize="@dimen/setting_right_MiddleFont_size"
             android:text="@string/typeWriting"/>
         <TextView
+            android:id="@+id/type_writing_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/setting_right_MinFont_size"

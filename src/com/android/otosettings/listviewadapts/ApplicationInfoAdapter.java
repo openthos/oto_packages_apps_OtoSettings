@@ -53,11 +53,9 @@ public class ApplicationInfoAdapter extends BaseAdapter {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
                         statusText.setText("on");
-                        
                     }
                     else{
                         statusText.setText("forbidden");
-                       
                     }
                 }
             });

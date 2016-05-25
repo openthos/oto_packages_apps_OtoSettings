@@ -77,38 +77,54 @@
         android:layout_marginTop="10dp"
         android:layout_height="2dp"
         android:background="@drawable/line"/>
-    <TextView
+    <LinearLayout
+        android:id="@+id/detail_date_and_time_timeSetting"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/timeSetting"
-        android:paddingTop="10dp"
-        android:textSize="@dimen/setting_right_MiddleFont_size"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/time"
-        android:paddingTop="5dp"
-        android:textSize="@dimen/setting_right_MinFont_size"
-        android:layout_marginBottom="10dp"/>
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/timeSetting"
+            android:paddingTop="10dp"
+            android:textSize="@dimen/setting_right_MiddleFont_size"/>
+        <TextView
+            android:id="@+id/tv_time_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/time"
+            android:paddingTop="5dp"
+            android:textSize="@dimen/setting_right_MinFont_size"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@drawable/line"/>
-    <TextView
+    <LinearLayout
+        android:id="@+id/detail_date_and_time_timeArea"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/timeareaSetting"
-        android:paddingTop="10dp"
-        android:textSize="@dimen/setting_right_MiddleFont_size"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/location"
-        android:paddingTop="5dp"
-        android:textSize="@dimen/setting_right_MinFont_size"
-        android:layout_marginBottom="10dp"/>
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/timeareaSetting"
+            android:paddingTop="10dp"
+            android:textSize="@dimen/setting_right_MiddleFont_size"/>
+        <TextView
+            android:id="@+id/tv_time_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/location"
+            android:paddingTop="5dp"
+            android:textSize="@dimen/setting_right_MinFont_size"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="2dp"
