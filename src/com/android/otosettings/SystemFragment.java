@@ -2,6 +2,7 @@ package com.android.otosettings;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,7 @@ public class SystemFragment extends Fragment {
         radioButton.setChecked(true);
         addRightFragment(new DisplayFragment(), "sys_display");
         MainActivity.tag_right = "sys_display";
-
+        Log.i("SystemFragment","---------------------------------------------------------------default-----displayFragment");
         systemGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -50,6 +51,7 @@ public class SystemFragment extends Fragment {
                     case R.id.left_setting_display_sys:
                         addRightFragment(new DisplayFragment(), "sys_display");
                         MainActivity.tag_right = "sys_display";
+                        Log.i("SystemFragment","------------------------------------------------------------click-------displayFragment");
                         break;
                     case R.id.left_setting_nsave_energe:
                         addRightFragment(new EnergeSaveFragment(), "sys_save");

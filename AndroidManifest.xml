@@ -120,8 +120,5 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
              </intent-filter>
          </activity-alias>
- 
-    
     </application>
-    
 </manifest>

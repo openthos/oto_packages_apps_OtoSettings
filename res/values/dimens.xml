@@ -12,4 +12,5 @@
     <dimen name="setting_right_titleFont_size">24sp</dimen>
     <dimen name="setting_right_MiddleFont_size">20sp</dimen>
     <dimen name="setting_right_MinFont_size">15sp</dimen>
+    <dimen name="settings_side_margin">0dip</dimen>
 </resources>

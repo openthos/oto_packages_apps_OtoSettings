@@ -2,6 +2,7 @@ package com.android.otosettings.applicationdetial;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ public class NotifyManagerFragment extends Fragment {
         View fragment_1_view = inflater.inflate(R.layout.detail_inform_manager,container,false);
         ls_notify_inform = (ListView) fragment_1_view.findViewById(R.id.ls_notify_application);
         ls_notify_inform.setAdapter(new ApplicationInfoAdapter(settingAppInfos,inflater,"notify_manager"));
-
+        Log.i("NotifyManagerFragment","---------------------------------------------------------------init-----notify");
         return fragment_1_view;
     }
     //show data

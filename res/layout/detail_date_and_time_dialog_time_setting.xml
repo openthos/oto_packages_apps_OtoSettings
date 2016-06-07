@@ -5,7 +5,7 @@
     android:orientation="horizontal">
     <LinearLayout
         android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_height="220dp"
         android:padding="10dp"
         android:layout_weight="1">
         <CalendarView
@@ -37,27 +37,6 @@
             android:textSize="@dimen/setting_right_MinFont_size"
             android:text="@string/space"
             android:gravity="center_horizontal"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp">
-            <Button
-                android:layout_toLeftOf="@+id/btn_dialog_calendar_cancel"
-                android:id="@+id/btn_dialog_calendar_confirm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/setting_right_MinFont_size"
-                android:text="@string/confirm" />
-            <Button
-                android:layout_alignParentRight="true"
-                android:id="@+id/btn_dialog_calendar_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/setting_right_MinFont_size"
-                android:text="@string/cancel"/>
-        </RelativeLayout>
 
     </LinearLayout>
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.android.otosettings;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,7 @@ public class NormalFragment extends Fragment {
         // default
         addRightFragment(new NotifyManagerFragment(),"normal_inform");
         MainActivity.tag_right= "normal_inform";
+        Log.i("NormalFragment","----------------------------------------------------------------default---addNotifyManager");
         normalGroup = (RadioGroup)view.findViewById(R.id.left_normal_group);
         normalGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -48,6 +50,7 @@ public class NormalFragment extends Fragment {
                     case R.id.left_setting_inform:
                         addRightFragment(new NotifyManagerFragment(),"normal_inform");
                         MainActivity.tag_right= "normal_inform";
+                        Log.i("NoramlFragment","---------------------------------------------------------------------click---notifymanager");
                         break;
                     case R.id.left_setting_reboot:
                         addRightFragment(new OpenSatrtFragment(),"normal_open_start");
