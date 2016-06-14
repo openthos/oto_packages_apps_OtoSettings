@@ -574,10 +574,10 @@ public final class Utils {
 //        return builder.create();
 //    }
 //
-//    public static boolean hasMultipleUsers(Context context) {
-//        return ((UserManager) context.getSystemService(Context.USER_SERVICE))
-//                .getUsers().size() > 1;
-//    }
+    public static boolean hasMultipleUsers(Context context) {
+        return ((UserManager) context.getSystemService(Context.USER_SERVICE))
+                .getUsers().size() > 1;
+    }
 //
 //    /**
 //     * Start a new instance of the activity, showing only the given fragment.

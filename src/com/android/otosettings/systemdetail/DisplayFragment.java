@@ -234,18 +234,28 @@ public class DisplayFragment extends Fragment {
 //                                .removeGlobalOnLayoutListener(this);
                     }
                 });
+        projectDialog.getViewTreeObserver().addOnGlobalLayoutListener(
+                new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+                        projectDialog.getLocationOnScreen(btnLocation);
+                        Log.i("dialogData","----dialogX====="+btnLocation[0]+"----dialogY====="+btnLocation[1]+"--dialogWidth----=="+projectDialog.getWidth()+"--dialogHeight---=="+projectDialog.getHeight());
+//                            mainView.getViewTreeObserver()
+//                                .removeGlobalOnLayoutListener(this);
+                    }
+                });
         btnPopupTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final View popupWindowView=LayoutInflater.from(getActivity()).inflate(R.layout.dialog_popup_window_list, null);
                 lvPopupWindowList =(ListView)popupWindowView.findViewById(R.id.lv_popup_list);
                 final PopupWindow pw=new PopupWindow(popupWindowView, 150,180);
-                btnPopupTitle.getViewTreeObserver().addOnGlobalLayoutListener(
+                popupWindowView.getViewTreeObserver().addOnGlobalLayoutListener(
                         new ViewTreeObserver.OnGlobalLayoutListener() {
                             @Override
                             public void onGlobalLayout() {
                                 popupWindowView.getLocationOnScreen(btnLocation);
-                                Log.i("observerPopup","----x=="+btnLocation[0]+"----y=="+btnLocation[1]);
+                                Log.i("observerPopup","----popupX====="+btnLocation[0]+"----popupY====="+btnLocation[1]+"--popupWidth----=="+popupWindowView.getWidth()+"--popupHeight---=="+popupWindowView.getHeight());
 //                              mainView.getViewTreeObserver()
 //                                .removeGlobalOnLayoutListener(this);
                             }

@@ -166,4 +166,9 @@ public class MainActivity extends FragmentActivity {
 //    public void addRightFragment(){
 //
 //    }
+
+@Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
 }

@@ -1,8 +1,14 @@
 package com.android.otosettings.systemdetail;
 
 import android.app.AlertDialog;
+import android.app.ActivityManagerNative;
+import android.app.IActivityManager;
+import android.app.backup.BackupManager;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.RemoteException;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Gravity;
@@ -10,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.inputmethod.InputMethodInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,6 +26,9 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.List;
+import java.util.Locale;
 
 import com.android.otosettings.MainActivity;
 import com.android.otosettings.Utils;
@@ -50,6 +61,12 @@ public class LanguageAndInputFragment extends Fragment {
     private int moveHeight;
     private int defaultWidth;
     private int defaultHeight;
+    private Locale localeChoose;
+    private String DEFAULT_INPUT_METHOD;
+    private String SOU_GOU = "com.sohu.inputmethod.sogou";
+    private String BAI_DU = "com.baidu.input";
+    private String GOOGLE = "com.google.android.inputmethod.pinyin";
+    private String TENCENT = "com.tencent.qqpinyin";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -98,8 +115,9 @@ public class LanguageAndInputFragment extends Fragment {
         btnPopupTitle = (Button) languageDialog.findViewById(R.id.btn_popup_title);
         tvCommonDialogLanguageTitle.setText("language ");
         btnPopupTitle.setText("simple Chinese");
-        final String[] languageList =new String[] {"simple chinese","complex chinese","complex chinese(Hokong)","English"};
-        final ArrayAdapter<String> languageAdapter = new ArrayAdapter<String>(getActivity(),R.layout.item_text_info,languageList);
+        final ArrayAdapter<LocalePicker.LocaleInfo> languageAdapter =
+                      LocalePicker.constructAdapter(getActivity(),R.layout.item_text_info,R.id.text1);
+        final List<LocalePicker.LocaleInfo>  locale = LocalePicker.locales;
         btnPopupTitle.getViewTreeObserver().addOnGlobalLayoutListener(
                 new ViewTreeObserver.OnGlobalLayoutListener() {
                     @Override
@@ -130,7 +148,9 @@ public class LanguageAndInputFragment extends Fragment {
                 lvPopupWindowList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        languageData = languageList[position];
+                        languageData = locale.get(position).toString();
+                        localeChoose = locale.get(position).getLocale();
+                        Log.i("localeChoose",localeChoose.toString());
                         updateDialogView(languageData);
                         pw.dismiss();
                     }
@@ -142,8 +162,19 @@ public class LanguageAndInputFragment extends Fragment {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        //Log.e(TAG, "confirm" + which);
+                        try {
+                            IActivityManager am = ActivityManagerNative.getDefault();
+                            Configuration config = am.getConfiguration();
+                            config.locale = localeChoose;
+                            // indicate this isn't some passing default - the user wants this remembered
+                            config.userSetLocale = true;
+                            am.updateConfiguration(config);
+                            // Trigger the dirty bit for the Settings Provider.
+                            BackupManager.dataChanged("com.android.providers.settings");
+                        } catch (RemoteException e) {
+                            // Intentionally left blank
+                        }
+                        getActivity().finish();
                     }
                 })
                 .setNeutralButton("cancel", new DialogInterface.OnClickListener() {
@@ -164,7 +195,14 @@ public class LanguageAndInputFragment extends Fragment {
         tvCommonDialogTypeWritingTitle = (TextView) typeWritingDialog.findViewById(R.id.common_dialog_title);
         btnPopupTitle = (Button) typeWritingDialog.findViewById(R.id.btn_popup_title);
         tvCommonDialogTypeWritingTitle.setText("typeWriting ");
-        final String[] typeWritingList =new String[] {"google inputWriting","sougou inputWriting","microsoft inputWriting","qqPinYin inputWriting"};
+        btnPopupTitle.setText("input method");
+        InputMethodManager imm = (InputMethodManager) getActivity()
+                                                        .getSystemService(getActivity().INPUT_METHOD_SERVICE);
+        final List<InputMethodInfo> methodList = imm.getInputMethodList();
+        final String[] typeWritingList =new String[methodList.size()];
+        for(int i=0;i<methodList.size();i++) {
+            typeWritingList[i] = methodList.get(i).loadLabel(getActivity().getPackageManager()).toString();
+        }
         final ArrayAdapter<String> typeWritingAdapter = new ArrayAdapter<String>(getActivity(),R.layout.item_text_info,typeWritingList);
         //typeWritingAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         btnPopupTitle.getViewTreeObserver().addOnGlobalLayoutListener(
@@ -197,6 +235,18 @@ public class LanguageAndInputFragment extends Fragment {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         typeWritingData = typeWritingList[position];
                         updateDialogView(typeWritingData);
+                        String inputPackageName = methodList.get(position).getPackageName();
+                        if(SOU_GOU.equals(inputPackageName)) {
+                            DEFAULT_INPUT_METHOD = "com.sohu.inputmethod.sogou/.SogouIME";
+                        } else if(GOOGLE.equals(inputPackageName)) {
+                            DEFAULT_INPUT_METHOD = "com.google.android.inputmethod.pinyin/.PinyinIME";
+                        } else if(BAI_DU.equals(inputPackageName)) {
+                            DEFAULT_INPUT_METHOD = "com.baidu.input/.ImeService";
+                        } else if(TENCENT.equals(inputPackageName)) {
+                            DEFAULT_INPUT_METHOD = "com.tencent.qqpinyin/.QQPYInputMethodService";
+                        } else {
+                            DEFAULT_INPUT_METHOD = "com.android.inputmethod.latin/.LatinIME";
+                        }
                         pw.dismiss();
                     }
                 });
@@ -207,8 +257,9 @@ public class LanguageAndInputFragment extends Fragment {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        //Log.e(TAG, "confirm" + which);
+                        Settings.Secure.putString(getActivity().getContentResolver(),
+                                Settings.Secure.DEFAULT_INPUT_METHOD,
+                                DEFAULT_INPUT_METHOD);
                     }
                 })
                 .setNeutralButton("cancel", new DialogInterface.OnClickListener() {

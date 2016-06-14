@@ -1,0 +1,149 @@
+大家好：
+
+个人觉得，以目前李兵的综合能力（普通的安卓应用开发人员）来看，想要按期完成确实有较大的困难。
+根据目前的资源和工作内容，个人建议如下：
+
+       1、继续研究如何定制OtoSettings，但需要从研发转换为研究（时间点需要向后推），毕竟我们已经
+            有一个可用的原始Settings，所以OtoSettings相对于其他的功能来说，不是特别紧急。
+
+       2、先着手解决其他一些目前系统没有，但我们依旧需要的同界面相关的功能：例如右下角点击对应
+            图标可以弹出对应窗口的功能（例如时间日期，电量，声音等）。从整体来看这么做会更有价值。
+
+对于目前Settings的情况，我个人也存在失误：
+
+       1、我这里注意到了Settings的用户界面接口（UX/UI）和Settings同底层的接口（可以是一个独立的apk）。
+             但却忽略了它同其他应用之间的接口（各个不同的应用都可以通过其接口来弹出使用Settings），其
+            接口是必需要复用的（保证接口不变，否则会引起对应用的各类兼容性问题）。
+
+       2、由于其功能较多，应用的接口也不少，所以其内部的消息流和数据流必然不会太简单（例如各个零碎
+            的功能之间有些会有关联，各个零碎的功能很多都可以独立启动等）。所以我们应该基本只能复用目
+            前已有的消息流和数据流。
+
+       3、对于一个程序内部可分为三大部分（界面、功能、消息数据流）。由于消息流数据流需要复用，功能
+            也需要复用，更改的只是界面，所以我们的开发方式需要是基于现有的Settings，对其界面进行大幅度
+            改造，然后消息数据流和功能在保证逻辑不变的情况下，去适应新的界面（类似于我对通知栏的改造）。
+
+对于下一步对Setting优化的具体研究步骤，个人建议分三步走：
+
+       1、删除目前Settings中所有不需要的功能，以及对应的界面和消息数据流。由此可以证明自己真正了解了
+            用户的需求，了解对应用程序的接口，熟悉了目前Settings的代码，也简化了一些我们需要改动的代码。
+
+       2、对于用户提的需求，目前Settings还没有实现，或实现的还不好的部分，我们基于目前的Settings来进行
+            开发，由此对外来说，等效与在保证整体没有变差，始终处于可测是的前提下，逐步增加功能。
+
+       3、对于界面更改，可以分为两个子阶段：首先是整体的Activity的更改（如何用一个Activity+fragments来
+             代替目前的多个Activity : 可先逐步减少Activity的数目，最后做到只有一个Activity）；其次是逐步细化
+             各子窗口细节。调整过程中，相关的消息数据流和功能也需要在保证逻辑不变的前提下，去适应界面。
+
+谢谢。
+
+———— 隐藏引用的内容 ————
+
+    ------------------------------------------------------------------
+    发件人：陈渝 <yuchen@mail.tsinghua.edu.cn>
+    发送时间：2016年6月14日(星期二) 08:08
+    收件人：bigandroid@googlegroups.com <bigandroid@googlegroups.com>
+    主　题：Fw: Re: [oto] OtoSettings开发所遇问题与心得（陈老师/吴老师/以及各位同事，同学）----------李兵
+
+
+
+
+    -----原始邮件-----
+    发件人: "陈渝" <yuchen@mail.tsinghua.edu.cn>
+    发送时间: 2016-06-14 08:08:14 (星期二)
+    收件人: "简简单单" <1310646537@qq.com>
+    抄送:
+    主题: Re: [oto] OtoSettings开发所遇问题与心得（陈老师/吴老师/以及各位同事，同学）----------李兵
+
+    感谢李兵的心得总结！
+    对于otosetting的需求中问题，如果没有找到合适的接口人，就先找我吧。
+    对于otosetting的UI/UX界面问题，可直接email吴琼老师，与她协商。
+    对于otosetting的实现问题，建议多于陈刚等开发人员进行协商，以完成需求和UI/UX定义为主。有具体困难，我们可以一起协商。
+    在测试方面，建议以真机为主，如何提高测试效率，是我们要解决的问题。
+    我们一起努力，改进oto，希望看到大家的进步！
+
+
+    -----原始邮件-----
+    发件人: "简简单单" <1310646537@qq.com>
+    发送时间: 2016-06-13 20:01:31 (星期一)
+    收件人: bigandroid <bigandroid@googlegroups.com>
+    抄送:
+    主题: [oto] OtoSettings开发所遇问题与心得（陈老师/吴老师/以及各位同事，同学）----------李兵
+
+    OtoSettings开发至今，过程中问题以及状况很多，我总结一下，希望各位老师/同事予以帮助，能够更加明确需求/任务/可行性/设计等诸多方面的情况。。。
+    1，需求
+        第一点，需求不明确。现在的开发基础时依据早期的prototype的settings样式，综合源生的settings功能，组合实现。但对于其中具体细节，不知道找谁去明确需求功能，依据样式源功能无法完全实现，依据功能而样式又不能足够依托。希望这一点能给出需求支援方案。
+    2，设计
+        现在的实现方式是按照样式需求，实现了一般OtoSettings 的样式（仿qq）,然后根据分析源生settings的代码去移植功能。
+       陈工认为，需要重新评估此实现方式的可行性。原因：从整体考虑，移植功能很大风险会导致其中的消息流不完全，也存在影响到其他应用使用设置的一些情况。建议从功能到样式，现在源settings基础上去明晰功能，然后删除冗余，在一点点的匹配样式。这样可以保证功能完备。
+       个人认为，陈工从功能到样式的思路。就本人现在能力分析，感觉实现困难，首先源settings是依托activity实现，各个功能都是独立activity，模块化严重，功能也较清晰，但实现Otosettings样式（仿qq），必定会需要在整体上融各部分，设计fragment的引入，这样样式保证功能在偏移到所需样式，感觉后期样式上实现有些困难。【个人意见，陈工认为可以实现，样式匹配难度要小于保证功能完善】
+    3，实现
+        现在的实现方式，依托早期样式，结合源settings功能，尽量去完善功能，由于有些需求不明确，以及实现方式没有确定的要求。现实现以源settings代码为主，不能移植部分自己实现。所以确实会存在消息流不完备的情形，又由于测试方案未定，所以这些可能存在的问题暂时未能发现。
+    4，测试
+        测试方面，首先时开发者自己测试。settings定制难度在于几乎所有功能都会设计到隐函数调用，导致无法在模拟器上看到实际效果，只能把实现代码移植到multiwindow上才能看到效果，能否跑通，样式是够匹配。
+    由于时自己实现的样式，所以过程中又会遇到新的bug，调试的难度也在与此，所有的操作需要通过模拟器来实现，更改代码，编译，取log，耗时严重；而且存在问题时，需要分析具体原因，此原因又有可能时由其他方面造成（例如frameWorkbase）等，分析难度增加，，
+
+    下面时我开发中遇到的具体问题：（包括需求不明确，开发遇到的问题等）
+    我主要实现的功能在系统设置方面，包括亮度调节，系统字体，时间日期设置以及语言与输入方方面
+    1，亮度设置：亮度调节范围不明确，手机存在自动调节亮度，还是电脑此功能就忽略了。
+    2，一共性问题：点击功能条目，以popupWidow弹出还是已dialog方式弹出。现实现方式已dialog实现，对于dialog内部下拉列表的实现，遇到问题并解决好就，首先使用spinner，由于dialog无窗体，而spinner又依托于此，导致显示位置不正确。之后用popup实现下拉列表，样式实现，同样存在位置偏移问题，但popupwindow可以指定偏移位置，由于showAtLocation（）方法的调用，其中位置偏移跟应用内部层次有关，是由相对位置计算而来的，内部层次调理不是很清楚，根据陈工指导，提出一版解决方案，但此问题没有解决彻底。
+    3，字体大小设置：参照源settings功能实现，首先noraml/大/小 所指定具体规格不明确。再有更改系统config会导致应用重启，由于fragment的设计不完美，存在层次冗余的问题。
+    4，日期时间设置：其中日期设置中，calendar实现样式未指定，是否需要自定义（现实现方式使用calendarView），对于时间的设置，是否需要区分12/24小时制（源sttings存在，现实现忽略），时间设置已输入的方式来控制，是够合理（现实现按此样式）。
+    5，语言与输入法设置：先说语言：是否所有支持的语言都显示，还是按样式给定只设置部分（例如英文，简体中文，繁体中文之类的）；还存在问题，当设置语言后，更改配置参数会导致应用自动重启，由于某些原因导致OtoSettings重启失败（调查中），但语言配置功能可以部署成功。
+         输入法方面：对于支持的种类是否有要求，知识部分输入法还是只要安装的我们就要可以支持应用。对于安装的新的输入法，进入时存在激活，点击时会自动调用源settings的某个activity来设置激活与否，是否Otosettings也许这样处理，若如此，新的启动界面如何处理。
+
+        针对于上述情况，希望各位老师同事能够分析探讨下，能够给出更好的建议与指导。。。现在的OtoSettings的开发难度与问题并存，，，亚历山大，，，
+        陈工建议，在OtoSettings未能有更好的解决方案时，我可以先参与例如右下角一些比较紧急功能的开发。
+
+
+                                                                                                                                                                                                                                                                              李兵
+
+    --
+    You received this message because you are subscribed to the Google Groups "bigandroid" group.
+    To unsubscribe from this group and stop receiving emails from it, send an email to bigandroid+unsubscribe@googlegroups.com.
+    To post to this group, send email to bigandroid@googlegroups.com.
+    Visit this group at https://groups.google.com/group/bigandroid.
+    To view this discussion on the web visit https://groups.google.com/d/msgid/bigandroid/tencent_54D0E22D138FDBB442AE0744%40qq.com.
+    For more options, visit https://groups.google.com/d/optout.
+
+    --
+    ==============================================
+    Chen, Yu
+    Ph.D.  Associate Professor
+    System Software&Software Engineering Group,
+    Dept. of Computer Science and Technology
+    Tsinghua University, Beijing 100084, P.R. China
+    E-Mail: mailto:yuchen@tsinghua.edu.cn
+    ==============================================
+
+
+
+
+    --
+    ==============================================
+    Chen, Yu
+    Ph.D.  Associate Professor
+    System Software&Software Engineering Group,
+    Dept. of Computer Science and Technology
+    Tsinghua University, Beijing 100084, P.R. China
+    E-Mail: mailto:yuchen@tsinghua.edu.cn
+    ==============================================
+
+
+    --
+    You received this message because you are subscribed to the Google Groups "bigandroid" group.
+    To unsubscribe from this group and stop receiving emails from it, send an email to bigandroid+unsubscribe@googlegroups.com.
+    To post to this group, send email to bigandroid@googlegroups.com.
+    Visit this group at https://groups.google.com/group/bigandroid.
+    To view this discussion on the web visit https://groups.google.com/d/msgid/bigandroid/3a25ec37.17c14.1554c3ce737.Coremail.yuchen%40mail.tsinghua.edu.cn.
+    For more options, visit https://groups.google.com/d/optout.
+
+
+--
+You received this message because you are subscribed to the Google Groups "bigandroid" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to bigandroid+unsubscribe@googlegroups.com.
+To post to this group, send email to bigandroid@googlegroups.com.
+Visit this group at https://groups.google.com/group/bigandroid.
+To view this discussion on the web visit https://groups.google.com/d/msgid/bigandroid/81930ae0-0f92-488b-89e9-f4e86ac1ab46.chengang%40emindsoft.com.cn.
+For more options, visit https://groups.google.com/d/optout.
+
